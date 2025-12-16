@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event City</title>
+  </head>
+  <body>
+    <form action="">
+      <div class="container-input-surname">
+        <label for="surname">Prénom</label>
+        <input type="text" id="surname" />
+      </div>
+      <div class="container-input-name">
+        <label for="name">Nom de famille</label>
+        <input type="text" id="name" />
+      </div>
+      <div class="container-date">
+        <label for="date">Date de naissance</label>
+        <input
+          type="date"
+          id="date"
+          value="01/01/2000"
+          min="01/01/1900"
+          autocomplete
+          checked
+        />
+      </div>
+      <div class="container-mail">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="Entrez votre email." />
+      </div>
+      <div class="container-adress">
+        <label for="adress">Adresse</label>
+        <input type="text" id="address" placeholder="Votre adresse" />
+      </div>
+      <div class="container-password">
+        <label for="password">Mot de passe</label>
+        <input type="text" id="password" placeholder="Votre mot de passe." />
+        <label for="confirm">Confirmer mot de passe</label>
+        <input
+          type="text"
+          id="confirm"
+          placeholder="Confirmer votre mot de passe."
+        />
+      </div>
+      <label for="cgv">Conditions générales de vente.</label>
+      <input type="checkbox" id="cgv" checked />
+    </form>
+  </body>
+</html>
