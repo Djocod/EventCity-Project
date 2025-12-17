@@ -4,78 +4,78 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event City</title>
+    <link rel="stylesheet" href="../asset/style/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
-  <body>
-    <aside>
-      <h2>Dans le vent</h2>
-      <div class="card-event-more">
-        <img src="" alt="" />
-        <h3></h3>
-        <p></p>
-        <div class="btn-swipe">
-          <button>no</button>
-          <button>ok</button>
-        </div>
-      </div>
-    </aside>
+  <body class="background-landing-swipe">
     <nav>
-      <img src="" alt="" />
-      <h2></h2>
-      <div class="btn"></div>
+      <img src="../asset/img/logo2.png" alt="" />
+      <h2>Dashboard</h2>
+      <img src="../asset/img/scooby.jpg" alt="" />
     </nav>
 
     <section class="container-dashboard">
       <div class="container-artists">
-        <img src="" alt="" />
-        <img src="" alt="" />
-        <img src="" alt="" />
-        <img src="" alt="" />
+        <h3>Artistes:</h3>
+        <div class="artists">
+          <img src="../asset/img//scooby.jpg" alt="" />
+          <img src="../asset/img//scooby.jpg" alt="" />
+        </div>
       </div>
       <div class="container-last-event">
-        <div class="card-event">
-          <img src="" alt="" />
+        <div class="card-last-event">
+          <img src="../asset/img/téléchargement.jpg" alt="" />
           <div class="desciption-event">
             <h3>Name Event</h3>
-            <p>Description de l'évenement</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
+              aperiam nostrum sapiente quia nemo, distinctio rerum. Modi tempora
+              consectetur officiis!
+            </p>
           </div>
-          <ul class="container-gender">
-            <li class="items-gender">Rap</li>
-            <li class="items-gender">R&B</li>
-            <li class="items-gender">Pop</li>
-          </ul>
         </div>
+        <ul class="container-gender">
+          <li class="items-gender">Rap</li>
+          <li class="items-gender">R&B</li>
+          <li class="items-gender">Pop</li>
+        </ul>
       </div>
     </section>
 
-    <section class="container-search">
-      <div class="container-selection-style">
-        <ul class="selection-gender">
-          <li class="item-gender-style">POP</li>
-          <li class="item-gender-style">POP</li>
-          <li class="item-gender-style">POP</li>
-        </ul>
-        <ul class="container-display-gender">
-          <li class="items-gender-display"></li>
-          <li class="items-gender-display"></li>
-          <li class="items-gender-display"></li>
-        </ul>
-        <div class="container-search-bar">
-          <label for="search"> Entre le nom de ton artiste. </label>
-          <input type="search" id="search" autocomplete />
-        </div>
+    <form class="form-dash">
+      <div class="container-search">
+        <label for="search-dash">Recherche</label>
+        <input type="text" name="search-dash" id="search-dash" />
       </div>
-    </section>
+      <div class="container-select">
+        <label for="select-gender">Genre</label>
+        <select name="select-gender" id="select-gender">
+          <option value="pop">POP</option>
+          <option value="r&b">R&B</option>
+          <option value="rock">Rock</option>
+        </select>
+      </div>
+      <button class="btn-search">Go</button>
+    </form>
 
     <section class="container-card-event">
       <div class="card-event">
-        <img src="" alt="" />
-        <h3></h3>
-        <p></p>
-        <div class="btn-swipe">
-          <button>no</button>
-          <button>ok</button>
-        </div>
+        <img src="../asset/img/image-concert.png" alt="" />
+        <h3>Event</h3>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo
+          mollitia molestiae maxime praesentium nihil amet fuga eaque sed dicta
+          odio!
+        </p>
+        <button class="btn-buy">GO !!!</button>
       </div>
     </section>
+    <script src="../index.js"></script>
   </body>
 </html>

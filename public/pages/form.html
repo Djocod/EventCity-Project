@@ -4,48 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event City</title>
+    <link rel="stylesheet" href="../asset/style/index.css" />
   </head>
-  <body>
-    <form action="">
-      <div class="container-input-surname">
-        <label for="surname">Prénom</label>
-        <input type="text" id="surname" />
-      </div>
+  <body class="background-form">
+    <form class="form-sign">
       <div class="container-input-name">
-        <label for="name">Nom de famille</label>
-        <input type="text" id="name" />
+        <div class="container-input">
+          <label for="surname">Prénom</label>
+          <input type="text" name="surname" id="surname" autocomplete="on" />
+        </div>
+        <div class="container-input">
+          <label for="name">Nom</label>
+          <input type="text" name="name" id="name" autocomplete="on" />
+        </div>
       </div>
       <div class="container-date">
         <label for="date">Date de naissance</label>
-        <input
-          type="date"
-          id="date"
-          value="01/01/2000"
-          min="01/01/1900"
-          autocomplete
-          checked
-        />
+        <input type="date" name="date" id="date" />
       </div>
       <div class="container-mail">
         <label for="email">E-mail</label>
-        <input type="email" id="email" placeholder="Entrez votre email." />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Entrez votre email."
+        />
       </div>
-      <div class="container-adress">
-        <label for="adress">Adresse</label>
-        <input type="text" id="address" placeholder="Votre adresse" />
+      <div class="container-address">
+        <label for="address">Adresse</label>
+        <input
+          type="text"
+          name="address"
+          id="address"
+          placeholder="Votre adresse"
+          autocomplete="on"
+        />
       </div>
       <div class="container-password">
         <label for="password">Mot de passe</label>
-        <input type="text" id="password" placeholder="Votre mot de passe." />
+        <input
+          type="text"
+          name="password"
+          id="password"
+          placeholder="Votre mot de passe."
+        />
         <label for="confirm">Confirmer mot de passe</label>
         <input
           type="text"
+          name="confirm"
           id="confirm"
           placeholder="Confirmer votre mot de passe."
         />
       </div>
-      <label for="cgv">Conditions générales de vente.</label>
-      <input type="checkbox" id="cgv" checked />
+      <div class="container-check">
+        <input type="checkbox" id="cgv" />
+        <label for="cgv">Conditions générales de vente.</label>
+        <button class="btn-submit" type="submit">
+          <a href="../pages/landing-swipe.html">GO !!</a>
+        </button>
+      </div>
     </form>
   </body>
 </html>

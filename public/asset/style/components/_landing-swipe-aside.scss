@@ -1,0 +1,233 @@
+.background-landing-swipe {
+  margin: 0 auto;
+  height: 100vh;
+  background: url(../../asset/img/img-concert7.jpeg) center/cover no-repeat
+    rgb(0, 0, 0);
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  background: rgb(39, 39, 39);
+  border-bottom: 3px solid rgb(246, 216, 69);
+
+  h2 {
+    font-size: 3rem;
+    color: white;
+  }
+  img {
+    height: 100%;
+    border-radius: 100%;
+  }
+}
+
+.container-dashboard {
+  margin: 20px auto;
+  padding: 50px;
+  width: 90%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: rgb(39, 39, 39);
+  box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+
+  .container-artists {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h3 {
+      color: white;
+      font-size: 1.4rem;
+    }
+    .artists {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      img {
+        height: 60px;
+        border-radius: 100px;
+        margin: 10px;
+        border: 2px solid rgb(119, 119, 119);
+      }
+    }
+  }
+  .container-last-event {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .card-last-event {
+      width: auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      img {
+        height: 100%;
+        width: 60%;
+        border-radius: 20px;
+        margin: 20px;
+        border: 2px solid rgb(119, 119, 119);
+      }
+      .desciption-event {
+        color: white;
+        padding: 20px;
+        border-left: 2px solid grey;
+        border-right: 2px solid grey;
+        h3 {
+          font-size: 1.4rem;
+          padding: 10px;
+        }
+        p {
+          padding: 10px;
+          text-align: start;
+        }
+      }
+    }
+    .container-gender {
+      width: 40%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+      .items-gender {
+        background: white;
+        padding: 4px 20px;
+        border-radius: 20px;
+        margin: 5px;
+        transition: 0.3s ease-in-out;
+        &:hover {
+          color: white;
+          background: rgb(246, 216, 69);
+          transition: 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+}
+
+.form-dash {
+  width: 65%;
+  margin: 0 auto 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: rgb(39, 39, 39);
+  box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+
+  .container-search {
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    label {
+      color: white;
+    }
+    #search-dash {
+      width: 85%;
+      border-radius: 20px;
+      padding: 5px 20px;
+      border: 1px solid silver;
+    }
+  }
+  .container-select {
+    width: 30%;
+    margin: 0 auto;
+    label {
+      color: white;
+      font-size: 1.2rem;
+    }
+    #select-gender {
+      padding: 4px;
+      width: 110px;
+      padding: 4px 10px;
+      border: 1px solid silver;
+      border-radius: 20px;
+      outline: none;
+      option {
+        padding: 4px 10px;
+        border: 1px solid silver;
+        border-radius: 20px;
+      }
+    }
+  }
+  .btn-search {
+    padding: 10px;
+    width: 10%;
+    border: none;
+    border-radius: 20px;
+    margin: 0 auto;
+    transition: 0.3s ease-in-out;
+    &:hover {
+      background: rgb(246, 216, 69);
+      transition: 0.3s ease-in-out;
+    }
+  }
+}
+.container-card-event {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px 50px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  &:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 80%;
+    height: 10px;
+    transform: translateX(12%);
+    background: rgb(39, 39, 39);
+    box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+  }
+
+  .card-event {
+    width: 25%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(39, 39, 39);
+    box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+    img {
+      height: 140px;
+      margin: 0 auto;
+      width: 100%;
+      border-radius: 10px;
+    }
+    h3 {
+      color: white;
+      font-size: 1.3rem;
+      padding: 10px;
+    }
+    p {
+      color: white;
+      font-size: 1rem;
+      padding: 10px 0px;
+    }
+    .btn-buy {
+      width: 100%;
+      margin: 10px 0px;
+      padding: 5px;
+      border-radius: 20px;
+      border: none;
+      transition: 0.3s ease-in-out;
+      &:hover {
+        background: rgb(246, 216, 69);
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+}

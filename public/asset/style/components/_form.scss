@@ -1,0 +1,88 @@
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.background-form {
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  place-content: center;
+  background: url(../../asset/img/image-concert.png) center/cover, no-repeat;
+  color: white;
+}
+label {
+  margin: 10px;
+}
+input[type="text"],
+input[type="date"],
+input[type="email"] {
+  border: 1px solid silver;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-sign {
+  position: relative;
+  padding: 30px;
+  width: 100%;
+  background: rgb(39, 39, 39);
+  box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+
+  .container-input-name {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .container-input {
+      @include flex-column;
+      #surname {
+        margin-right: 10px;
+      }
+    }
+  }
+  .container-date {
+    @include flex-column;
+    margin: 5px 0px;
+    input[type="date"] {
+      width: 50%;
+      text-align: center;
+    }
+  }
+  .container-mail {
+    width: 100%;
+    @include flex-column;
+  }
+  .container-address {
+    @include flex-column;
+  }
+
+  .container-password {
+    width: 100%;
+    @include flex-column;
+  }
+  .container-check {
+    width: 100%;
+    margin: 20px auto 10px;
+    display: flex;
+    align-items: center;
+
+    input[type="checkbox" i] {
+      outline: none;
+    }
+    .btn-submit {
+      width: 20%;
+      height: 30px;
+      border-radius: 20px;
+      border: none;
+      transition: 0.3s ease-in-out;
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      &:hover {
+        background: rgb(0, 225, 255);
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+}
