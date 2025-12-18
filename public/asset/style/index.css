@@ -2,7 +2,8 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 16px;
   font-family: "Inter", sans-serif;
   list-style: none;
@@ -27,16 +28,24 @@ p {
 }
 
 nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
   height: 80px;
   padding: 0 30px;
   background: rgb(39, 39, 39);
   border-bottom: 4px solid rgb(246, 217, 69);
-  box-sizing: border-box;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 nav h2 {
   font-size: 1.8rem;
@@ -63,15 +72,23 @@ nav img {
   border: 2px solid rgb(246, 217, 69);
   -o-object-fit: cover;
      object-fit: cover;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 nav img:hover {
-  transform: rotate(10deg) scale(1.1);
+  -webkit-transform: rotate(10deg) scale(1.1);
+          transform: rotate(10deg) scale(1.1);
 }
 nav .container-nav-cta {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 15px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 nav button {
   padding: 8px 20px;
@@ -79,6 +96,7 @@ nav button {
   border: none;
   background: white;
   cursor: pointer;
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 nav button a {
@@ -93,16 +111,34 @@ nav button:hover {
 .container-header-landingpage {
   background: url("../../asset/img/img-concert3.jpeg") center/cover no-repeat;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .container-header-landingpage .container-header-elements {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 100%;
   color: white;
   text-align: center;
@@ -119,8 +155,12 @@ nav button:hover {
   font-weight: 700;
 }
 .container-header-landingpage .container-header-elements .container-heeader-cta {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 10px;
   margin-top: 20px;
 }
@@ -130,6 +170,7 @@ nav button:hover {
   border: none;
   background: white;
   cursor: pointer;
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 .container-header-landingpage .container-header-elements .container-heeader-cta button a {
@@ -146,9 +187,15 @@ nav button:hover {
   width: 100%;
   height: 80px;
   color: rgb(246, 216, 69);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .infos-event p {
@@ -177,11 +224,16 @@ section {
 }
 
 .container-hover-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 25px;
   overflow: hidden;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-top: 40px;
 }
 
@@ -192,12 +244,16 @@ section {
   -o-object-fit: cover;
      object-fit: cover;
   border: 3px solid rgb(246, 216, 69);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
   cursor: pointer;
 }
 
 .container-hover-img img:hover {
-  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .keywords {
@@ -241,13 +297,15 @@ input[type=password] {
   padding: 30px;
   width: 100%;
   background: rgb(39, 39, 39);
-  box-shadow: 5px 5px 0px 5px rgb(246, 216, 69);
+  -webkit-box-shadow: 5px 5px 0px 5px rgb(246, 216, 69);
+          box-shadow: 5px 5px 0px 5px rgb(246, 216, 69);
 }
 .form-sign span {
   bottom: -10px;
   left: 0;
   display: block;
   font-size: 0.5rem;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
   color: red;
 }
@@ -255,13 +313,22 @@ input[type=password] {
   border: 1px solid rgba(255, 0, 0, 0.527);
 }
 .form-sign .container-input-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .form-sign .container-input-name .surname-container,
 .form-sign .container-input-name .pseudo-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .form-sign .container-input-name .surname-container #surname,
 .form-sign .container-input-name .surname-container #pseudo,
@@ -270,8 +337,13 @@ input[type=password] {
   margin-right: 10px;
 }
 .form-sign .years-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 5px 0px;
 }
 .form-sign .years-container input[type=date] {
@@ -280,28 +352,52 @@ input[type=password] {
 }
 .form-sign .email-container {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .form-sign .city-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .form-sign .password-container {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .form-sign .confirmPass-container {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .form-sign .check-container {
   width: 100%;
   margin: 20px auto 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .form-sign .check-container input[type=checkbox i] {
   outline: none;
@@ -312,6 +408,7 @@ input[type=password] {
   height: 30px;
   border-radius: 20px;
   border: none;
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 .form-sign .check-container .btn-submit a {
@@ -320,6 +417,7 @@ input[type=password] {
 }
 .form-sign .check-container .btn-submit:hover {
   background: rgb(246, 216, 69);
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
@@ -327,23 +425,39 @@ input[type=password] {
   display: grid;
   place-content: center;
   margin: 0 auto;
-  align-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
   background: url(../../asset/img/img-concert3.jpeg) center/cover no-repeat;
 }
 .body-connect .form-connect {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 400px;
   padding: 20px;
   background: rgb(39, 39, 39);
-  box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+  -webkit-box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+          box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
 }
 .body-connect .form-connect .container-connect-email,
 .body-connect .form-connect .container-connect-password {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   padding: 5px 0px;
 }
 .body-connect .form-connect .container-connect-email label,
@@ -357,6 +471,7 @@ input[type=password] {
   left: 0;
   display: block;
   font-size: 0.5rem;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
   color: red;
 }
@@ -373,23 +488,30 @@ input[type=password] {
 }
 .body-connect .form-connect button:hover {
   background: rgb(246, 216, 69);
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
 .background-landing-swipe {
   margin: 0 auto;
-  height: 100vh;
   background: url(../../asset/img/img-concert7.jpeg) center/cover no-repeat rgb(0, 0, 0);
 }
 .background-landing-swipe nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
   height: 80px;
   padding: 0 40px;
   background: rgb(39, 39, 39);
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   position: relative;
   overflow: hidden;
 }
@@ -400,6 +522,7 @@ input[type=password] {
   left: 0;
   width: 100%;
   height: 4px;
+  background: -webkit-gradient(linear, left top, right top, from(rgb(246, 217, 69)), to(transparent));
   background: linear-gradient(90deg, rgb(246, 217, 69) 0%, transparent 100%);
 }
 .background-landing-swipe nav h2 {
@@ -415,11 +538,18 @@ input[type=password] {
   color: rgb(246, 217, 69);
 }
 .background-landing-swipe nav a {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 60px;
   width: 60px;
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: -webkit-transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .background-landing-swipe nav a img {
   height: 100%;
@@ -431,9 +561,12 @@ input[type=password] {
   padding: 2px;
 }
 .background-landing-swipe nav a:hover {
-  transform: scale(1.1) rotate(5deg);
+  -webkit-transform: scale(1.1) rotate(5deg);
+          transform: scale(1.1) rotate(5deg);
 }
 .background-landing-swipe nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   list-style: none;
   gap: 30px;
@@ -450,34 +583,56 @@ input[type=password] {
 }
 .background-landing-swipe nav ul li a:hover {
   color: rgb(246, 217, 69);
-  transform: none;
+  -webkit-transform: none;
+          transform: none;
 }
 
 .container-dashboard {
   margin: 20px auto;
   padding: 50px;
   width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: rgb(39, 39, 39);
-  box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+  -webkit-box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+          box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
 }
 .container-dashboard .container-artists {
   width: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .container-dashboard .container-artists h3 {
   color: white;
   font-size: 1.4rem;
 }
 .container-dashboard .container-artists .artists {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .container-dashboard .container-artists .artists img {
   height: 60px;
@@ -486,15 +641,25 @@ input[type=password] {
   border: 2px solid rgb(119, 119, 119);
 }
 .container-dashboard .container-last-event {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .container-dashboard .container-last-event .card-last-event {
   width: auto;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .container-dashboard .container-last-event .card-last-event img {
   height: 100%;
@@ -519,39 +684,60 @@ input[type=password] {
 }
 .container-dashboard .container-last-event .container-gender {
   width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .container-dashboard .container-last-event .container-gender .items-gender {
   background: white;
   padding: 4px 20px;
   border-radius: 20px;
   margin: 5px;
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 .container-dashboard .container-last-event .container-gender .items-gender:hover {
   color: white;
   background: rgb(246, 216, 69);
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
 .form-dash {
   width: 65%;
   margin: 0 auto 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: rgb(39, 39, 39);
-  box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+  -webkit-box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+          box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
 }
 .form-dash .container-search {
   width: 50%;
   padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .form-dash .container-search label {
   color: white;
@@ -589,10 +775,12 @@ input[type=password] {
   border: none;
   border-radius: 20px;
   margin: 0 auto;
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 .form-dash .btn-search:hover {
   background: rgb(246, 216, 69);
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
@@ -601,10 +789,16 @@ input[type=password] {
   width: 100%;
   margin: 0 auto;
   padding: 50px 50px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 .container-card-event:before {
   position: absolute;
@@ -613,19 +807,31 @@ input[type=password] {
   top: 0;
   width: 80%;
   height: 10px;
-  transform: translateX(12%);
+  -webkit-transform: translateX(12%);
+          transform: translateX(12%);
   background: rgb(39, 39, 39);
-  box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+  -webkit-box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+          box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
 }
 .container-card-event .card-event {
   width: 25%;
   padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: rgb(39, 39, 39);
-  box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+  -webkit-box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
+          box-shadow: 3px 3px 0px 3px rgb(246, 216, 69);
 }
 .container-card-event .card-event img {
   height: 140px;
@@ -649,51 +855,166 @@ input[type=password] {
   padding: 5px;
   border-radius: 20px;
   border: none;
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 .container-card-event .card-event .btn-buy:hover {
   background: rgb(246, 216, 69);
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
-.card-container {
+.container-artist-section {
+  width: 100%;
+}
+.container-artist-section .artist-info-card {
+  width: 30%;
+  margin: 0 auto;
+}
+.container-artist-section .artist-info-card .artist-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+  background: rgb(39, 39, 39);
+  border-radius: 15px;
+  -webkit-box-shadow: 5px 5px 0px 5px rgb(246, 216, 69);
+          box-shadow: 5px 5px 0px 5px rgb(246, 216, 69);
+  margin: 20px auto;
+  max-width: 500px;
+}
+.container-artist-section .artist-info-card .artist-header .artist-image {
+  height: 150px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 4px solid rgb(246, 216, 69);
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.container-artist-section .artist-info-card .artist-header .artist-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 12px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.container-artist-section .artist-info-card .artist-header .artist-details h2 {
+  font-size: 2rem;
+  color: white;
+  margin: 0;
+}
+.container-artist-section .artist-info-card .artist-header .artist-details .artist-genres {
+  font-size: 1rem;
+  color: rgb(246, 216, 69);
+  font-weight: 500;
+  margin: 0;
+}
+.container-artist-section .artist-info-card .artist-header .artist-details .artist-stats {
+  font-size: 0.95rem;
+  color: rgb(200, 200, 200);
+  margin: 0;
+}
+.container-artist-section .artist-info-card .artist-header .artist-details .spotify-link {
+  display: inline-block;
+  padding: 12px 25px;
+  background: rgb(246, 216, 69);
+  color: rgb(39, 39, 39);
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1rem;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin-top: 8px;
+}
+.container-artist-section .artist-info-card .artist-header .artist-details .spotify-link:hover {
+  background: white;
+  color: rgb(39, 39, 39);
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 4px 8px rgba(246, 216, 69, 0.3);
+          box-shadow: 0 4px 8px rgba(246, 216, 69, 0.3);
+}
+
+.card-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
 }
 .card-container .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   min-width: 260px;
   height: 150px;
   margin: 10px;
   padding: 20px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background-color: rgb(39, 39, 39);
   border-left: 6px solid rgb(246, 217, 69);
   border-radius: 4px;
   color: #ffffff;
+  -webkit-transition: -webkit-transform 0.2s ease;
+  transition: -webkit-transform 0.2s ease;
   transition: transform 0.2s ease;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
   cursor: pointer;
 }
 .card-container .card:hover {
-  transform: translateX(5px);
-  box-shadow: 10px 10px 0px rgba(246, 217, 69, 0.2);
+  -webkit-transform: translateX(5px);
+          transform: translateX(5px);
+  -webkit-box-shadow: 10px 10px 0px rgba(246, 217, 69, 0.2);
+          box-shadow: 10px 10px 0px rgba(246, 217, 69, 0.2);
 }
 .card-container .card img {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 2px;
-  filter: grayscale(20%);
+  -webkit-filter: grayscale(20%);
+          filter: grayscale(20%);
 }
 .card-container .card .text {
   padding: 0px 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .card-container .card .text h3 {
   font-size: 1.1rem;
@@ -709,25 +1030,23 @@ input[type=password] {
   color: rgba(255, 255, 255, 0.8);
   font-weight: 300;
 }
-.card-container .card .text button {
-  background: transparent;
-  border: none;
-  padding: 10px;
-}
-.card-container .card .text button a {
-  color: white;
-  text-decoration: none;
-}
 
 .container-body nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
   height: 80px;
   padding: 0 40px;
   background: rgb(39, 39, 39);
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   position: relative;
   overflow: hidden;
 }
@@ -738,6 +1057,7 @@ input[type=password] {
   left: 0;
   width: 100%;
   height: 4px;
+  background: -webkit-gradient(linear, left top, right top, from(rgb(246, 217, 69)), to(transparent));
   background: linear-gradient(90deg, rgb(246, 217, 69) 0%, transparent 100%);
 }
 .container-body nav h2 {
@@ -753,11 +1073,18 @@ input[type=password] {
   color: rgb(246, 217, 69);
 }
 .container-body nav a {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 60px;
   width: 60px;
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: -webkit-transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .container-body nav a img {
   height: 100%;
@@ -769,9 +1096,12 @@ input[type=password] {
   padding: 2px;
 }
 .container-body nav a:hover {
-  transform: scale(1.1) rotate(5deg);
+  -webkit-transform: scale(1.1) rotate(5deg);
+          transform: scale(1.1) rotate(5deg);
 }
 .container-body nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   list-style: none;
   gap: 30px;
@@ -788,12 +1118,19 @@ input[type=password] {
 }
 .container-body nav ul li a:hover {
   color: rgb(246, 217, 69);
-  transform: none;
+  -webkit-transform: none;
+          transform: none;
 }
 .container-body .container-profil-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0 auto;
   width: 70%;
   height: 200px;
@@ -805,9 +1142,15 @@ input[type=password] {
   border-radius: 10px;
   padding: 30px;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .container-body .container-profil-header .info-profil img {
   width: 70px;
@@ -830,7 +1173,8 @@ input[type=password] {
   border-radius: 12px;
   color: rgb(39, 39, 39);
   text-align: center;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -854,9 +1198,14 @@ input[type=password] {
   padding-bottom: 5px;
 }
 .container-body .future-event .text-event {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 10px;
   gap: 15px;
 }
@@ -867,8 +1216,10 @@ input[type=password] {
   border: 3px solid rgb(39, 39, 39);
   -o-object-fit: cover;
      object-fit: cover;
-  flex-shrink: 0;
-  box-shadow: 4px 4px 0px rgb(39, 39, 39);
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-shadow: 4px 4px 0px rgb(39, 39, 39);
+          box-shadow: 4px 4px 0px rgb(39, 39, 39);
 }
 .container-body .future-event .text-event p {
   text-align: left;
@@ -879,8 +1230,12 @@ input[type=password] {
   color: rgb(39, 39, 39);
 }
 .container-body .btn-toggle {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 15px;
   margin: 30px 0;
 }
@@ -892,51 +1247,78 @@ input[type=password] {
   background: white;
   text-align: center;
   cursor: pointer;
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 .container-body .btn-toggle p:hover {
   background-color: rgb(246, 217, 69);
   border: 1px solid transparent;
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 .container-body .card-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
 }
 .container-body .card-container .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   min-width: 260px;
   height: 150px;
   margin: 10px;
   padding: 20px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background-color: rgb(39, 39, 39);
   border-left: 6px solid rgb(246, 217, 69);
   border-radius: 4px;
   color: #ffffff;
+  -webkit-transition: -webkit-transform 0.2s ease;
+  transition: -webkit-transform 0.2s ease;
   transition: transform 0.2s ease;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
   cursor: pointer;
 }
 .container-body .card-container .card:hover {
-  transform: translateX(5px);
-  box-shadow: 10px 10px 0px rgba(246, 217, 69, 0.2);
+  -webkit-transform: translateX(5px);
+          transform: translateX(5px);
+  -webkit-box-shadow: 10px 10px 0px rgba(246, 217, 69, 0.2);
+          box-shadow: 10px 10px 0px rgba(246, 217, 69, 0.2);
 }
 .container-body .card-container .card img {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 2px;
-  filter: grayscale(20%);
+  -webkit-filter: grayscale(20%);
+          filter: grayscale(20%);
 }
 .container-body .card-container .card .text {
   padding: 0px 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .container-body .card-container .card .text h3 {
   font-size: 1.1rem;

@@ -1,16 +1,95 @@
 const inputSearch = document.getElementById("search-dash");
 const cardCont = document.querySelector(".card-container");
 const selectGender = document.getElementById("select-gender");
+const containerArtistSection = document.querySelector(
+  ".container-artist-section"
+);
 
-// Clés API
-const TICKETMASTER_API_KEY = "GB63Q2HN7Fo2mTBmSXL25Dq6wS1amhVV";
-let spotifyAccessToken = ""; // À définir avec votre token Spotify
-
+let spotifyAccessToken = "";
 let allGenres = new Set();
 
-// ============ SPOTIFY API ============
+// ============ RÉCUPÉRATION DU TOKEN SPOTIFY ============
+async function fetchSpotifyAccessToken() {
+  try {
+    const res = await fetch("http://localhost:3000/spotify/spotify-token");
+    if (!res.ok) throw new Error("Erreur serveur");
+
+    const data = await res.json();
+    if (data.access_token) {
+      spotifyAccessToken = data.access_token;
+      console.log("✅ Token Spotify récupéré avec succès");
+      return true;
+    } else {
+      throw new Error("Token absent dans la réponse");
+    }
+  } catch (e) {
+    console.error("❌ Erreur lors de la récupération du token Spotify:", e);
+    alert(
+      "Impossible de se connecter à Spotify. Vérifiez que le serveur backend est démarré."
+    );
+    return false;
+  }
+}
+
+// ============ CHARGEMENT INITIAL ============
+window.addEventListener("DOMContentLoaded", async () => {
+  const tokenOk = await fetchSpotifyAccessToken();
+  if (tokenOk) {
+    displayArtistsWithEventsOnLoad();
+  } else {
+    cardCont.innerHTML =
+      "<p class='no-result'>⚠️ Service temporairement indisponible</p>";
+  }
+});
+
+// ============ AFFICHAGE INITIAL DES ÉVÉNEMENTS ============
+async function displayArtistsWithEventsOnLoad() {
+  try {
+    // Utiliser la route backend Ticketmaster
+    const response = await fetch(
+      "http://localhost:3000/ticketmaster/events?countryCode=FR&size=10"
+    );
+
+    if (!response.ok) {
+      console.error("Erreur Ticketmaster:", response.status);
+      return;
+    }
+
+    const data = await response.json();
+    const events = data?._embedded?.events || [];
+
+    if (events.length === 0) {
+      cardCont.innerHTML = "<p class='no-result'>Aucun événement trouvé</p>";
+      return;
+    }
+
+    cardCont.innerHTML = "";
+    containerArtistSection.innerHTML = "";
+    allGenres.clear();
+
+    for (const event of events) {
+      const artistName = event._embedded?.attractions?.[0]?.name;
+
+      if (artistName) {
+        const spotifyArtist = await searchArtistOnSpotify(artistName);
+        if (spotifyArtist) {
+          displayArtistCard(spotifyArtist);
+        }
+      }
+
+      displayEvents([event]);
+    }
+
+    updateGenreFilter();
+  } catch (e) {
+    console.error("Erreur lors du chargement initial:", e);
+    cardCont.innerHTML = "<p class='no-result'>Erreur de chargement</p>";
+  }
+}
+
+// ============ RECHERCHE SPOTIFY ============
 async function searchArtistOnSpotify(artistName) {
-  if (!artistName) return null;
+  if (!artistName || !spotifyAccessToken) return null;
 
   const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(
     artistName
@@ -24,7 +103,7 @@ async function searchArtistOnSpotify(artistName) {
     });
 
     if (!response.ok) {
-      console.error("Spotify API error:", response.status);
+      console.error("Erreur Spotify API:", response.status);
       return null;
     }
 
@@ -45,37 +124,39 @@ async function searchArtistOnSpotify(artistName) {
       followers: artist.followers?.total || 0,
     };
   } catch (error) {
-    console.error("Erreur Spotify :", error);
+    console.error("Erreur Spotify:", error);
     return null;
   }
 }
 
-// ============ TICKETMASTER API ============
+// ============ RECHERCHE TICKETMASTER ============
 async function searchEventsOnTicketmaster(artistName) {
   if (!artistName) return [];
 
-  const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${encodeURIComponent(
-    artistName
-  )}&countryCode=US&size=50&apikey=${TICKETMASTER_API_KEY}`;
-
   try {
-    const response = await fetch(url);
+    // Utiliser la route backend
+    const response = await fetch(
+      `http://localhost:3000/ticketmaster/events/search?keyword=${encodeURIComponent(
+        artistName
+      )}&countryCode=US&size=50`
+    );
 
     if (!response.ok) {
-      console.error("Ticketmaster API error:", response.status);
+      console.error("Erreur Ticketmaster API:", response.status);
       return [];
     }
 
     const data = await response.json();
     return data?._embedded?.events || [];
   } catch (error) {
-    console.error("Erreur Ticketmaster :", error);
+    console.error("Erreur Ticketmaster:", error);
     return [];
   }
 }
 
-// ============ AFFICHAGE ============
+// ============ AFFICHAGE ARTISTE ============
 function displayArtistCard(artist) {
+  containerArtistSection.innerHTML = "";
   const artistSection = document.createElement("div");
   artistSection.classList.add("artist-info-card");
 
@@ -105,15 +186,24 @@ function displayArtistCard(artist) {
     </div>
   `;
 
-  cardCont.insertAdjacentElement("afterbegin", artistSection);
+  containerArtistSection.appendChild(artistSection);
 }
 
+// ============ AFFICHAGE ÉVÉNEMENTS ============
 function displayEvents(events) {
   events.forEach((data) => {
+    // Trouver la meilleure image disponible
+    let imageUrl = "";
+    if (data.images && data.images.length > 0) {
+      imageUrl =
+        data.images[Math.min(2, data.images.length - 1)]?.url ||
+        data.images[0].url;
+    }
+
     const card = document.createElement("div");
     card.classList = "card";
     card.innerHTML = `
-      <img src="${data.images[8]?.url || data.images[0]?.url}" />
+      <img src="${imageUrl}" alt="${data.name}" />
       <div class="text">
         <h3>${data.name}</h3>
         <p class="event-genre">${
@@ -130,12 +220,12 @@ function displayEvents(events) {
     `;
     cardCont.appendChild(card);
 
-    // Collecter les genres pour le filtre
     const genre = data.classifications?.[0]?.genre?.name;
     if (genre) allGenres.add(genre);
   });
 }
 
+// ============ MISE À JOUR FILTRE GENRE ============
 function updateGenreFilter() {
   selectGender.innerHTML = '<option value="">Tous les genres</option>';
   allGenres.forEach((genre) => {
@@ -146,6 +236,7 @@ function updateGenreFilter() {
   });
 }
 
+// ============ AFFICHAGE AUCUN RÉSULTAT ============
 function displayNoResult() {
   cardCont.innerHTML =
     "<p class='no-result'>Aucun artiste ou événement trouvé.</p>";
@@ -160,11 +251,9 @@ async function searchArtistAndEvents() {
     return;
   }
 
-  // Afficher un loader
-  cardCont.innerHTML = "<p class='loading'>Recherche en cours...</p>";
+  cardCont.innerHTML = "<p class='loading'>🔍 Recherche en cours...</p>";
   allGenres.clear();
 
-  // 1. Rechercher l'artiste sur Spotify
   const spotifyArtist = await searchArtistOnSpotify(artistName);
 
   if (!spotifyArtist) {
@@ -173,11 +262,8 @@ async function searchArtistAndEvents() {
   }
 
   cardCont.innerHTML = "";
-
-  // 2. Afficher la carte de l'artiste
   displayArtistCard(spotifyArtist);
 
-  // 3. Rechercher les événements sur Ticketmaster
   const events = await searchEventsOnTicketmaster(spotifyArtist.name);
 
   if (events.length === 0) {
@@ -208,12 +294,8 @@ function filterByGenre() {
 
 // ============ EVENT LISTENERS ============
 inputSearch.addEventListener("input", () => {
-  // Recherche automatique après 500ms d'inactivité
   clearTimeout(inputSearch.searchTimeout);
   inputSearch.searchTimeout = setTimeout(searchArtistAndEvents, 500);
 });
 
 selectGender.addEventListener("change", filterByGenre);
-
-// Note: Vous devez obtenir un token Spotify OAuth
-// Pour tester, utilisez: https://developer.spotify.com/console/get-search-item/
