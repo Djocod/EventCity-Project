@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .background-form {
   margin: 0 auto;
   width: 100%;
@@ -16,7 +17,7 @@ label {
 }
 input[type="text"],
 input[type="date"],
-input[type="email"] {
+input[type="password"] {
   border: 1px solid silver;
   padding: 5px;
   border-radius: 5px;
@@ -29,18 +30,32 @@ input[type="email"] {
   width: 100%;
   background: rgb(39, 39, 39);
   box-shadow: 5px 5px 0px 5px rgb(246, 216, 69);
+  span {
+    // position: absolute;
+    bottom: -10px;
+    left: 0;
+    display: block;
+    font-size: 0.5rem;
+    transition: 0.3s;
+    color: red;
+  }
+  .error {
+    border: 1px solid rgba(255, 0, 0, 0.527);
+  }
 
   .container-input-name {
     display: flex;
     justify-content: space-between;
-    .container-input {
+    .surname-container,
+    .pseudo-container {
       @include flex-column;
-      #surname {
+      #surname,
+      #pseudo {
         margin-right: 10px;
       }
     }
   }
-  .container-date {
+  .years-container {
     @include flex-column;
     margin: 5px 0px;
     input[type="date"] {
@@ -48,19 +63,23 @@ input[type="email"] {
       text-align: center;
     }
   }
-  .container-mail {
+  .email-container {
     width: 100%;
     @include flex-column;
   }
-  .container-address {
+  .city-container {
     @include flex-column;
   }
 
-  .container-password {
+  .password-container {
     width: 100%;
     @include flex-column;
   }
-  .container-check {
+  .confirmPass-container {
+    width: 100%;
+    @include flex-column;
+  }
+  .check-container {
     width: 100%;
     margin: 20px auto 10px;
     display: flex;
@@ -71,6 +90,7 @@ input[type="email"] {
     }
     .btn-submit {
       width: 20%;
+      margin: 0 auto;
       height: 30px;
       border-radius: 20px;
       border: none;
@@ -80,7 +100,7 @@ input[type="email"] {
         color: black;
       }
       &:hover {
-        background: rgb(0, 225, 255);
+        background: rgb(246, 216, 69);
         transition: 0.3s ease-in-out;
       }
     }

@@ -1,6 +1,6 @@
 @import "./settings";
-@import "./components/landing-swipe-aside";
-@import "./components/form";
-@import "./components/connect";
-@import "./components/landingPage";
-@import "./components/profil";
+@import "../../landingPage/landingPage";
+@import "../../form/form";
+@import "../../connect/connect";
+@import "../../landing-swipe/landing-swipe-aside";
+@import "../../profil/profil";
