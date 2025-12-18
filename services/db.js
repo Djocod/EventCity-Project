@@ -1,18 +1,11 @@
-const mysql = require("mysql2/promise");
+const mqsql = require("mysql");
 const config = require("../config");
 
 async function query(sql, params) {
   const connection = await mysql.createConnection(config.database);
+  const [results] = await connection.execute(sql, params);
 
-  try {
-    const [results] = await connection.execute(sql, params);
-    return results;
-  } catch (error) {
-    console.error("❌ Erreur SQL:", error.message);
-    throw error;
-  } finally {
-    await connection.end();
-  }
+  return results;
 }
 
 module.exports = {

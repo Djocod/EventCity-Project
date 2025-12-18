@@ -20,15 +20,15 @@ async function fetchAndInsertArtists(keyword, page = 1) {
 
     const response = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${spotifyClientId}&${spotifyClientSecret}`,
       },
     });
 
-    const data = response.data;
+    const data = await response.json();
     const artists = data.artists.items;
 
     for (const artist of artists) {
-      const existing = await db.query(
+      const [existing] = await db.query(
         "SELECT id FROM Artists WHERE id_artists_spotify = ?",
         [artist.id]
       );
@@ -61,10 +61,7 @@ async function fetchAndInsertArtists(keyword, page = 1) {
 
 async function getMultiple(page = 1) {
   const offset = helper.getOffset(page, config.listPerPage);
-  const rows = await db.query(`SELECT * FROM Artists LIMIT ? OFFSET ?`, [
-    config.listPerPage,
-    offset,
-  ]);
+  const rows = await db.query(`SELECT * FROM Artists`);
   const data = helper.emptyorRows(rows);
   const meta = { page };
 
