@@ -2,31 +2,33 @@ const db = require("./db");
 const helper = require("../helper");
 const config = require("../config");
 const axios = require("axios");
-//const spotifyToken = require("../config/spotifyToken");
+const { getSpotifyToken } = require("../spotifyToken");
+
 const spotifyClientId = config.spotifyToken.spotifyClientId;
 const spotifyClientSecret = config.spotifyToken.spotifyClientSecret;
 
-// Fetch and insert artists from Spotify
-async function fetchAndInsertArtists(id) {
+// Récupérer et insérer des artistes depuis Spotify
+async function fetchAndInsertArtists(keyword, page = 1) {
   try {
-    const token = await spotifyToken();
+    const token = await getSpotifyToken();
     const limit = 10;
     const offset = (page - 1) * limit;
+
     const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(
-      id
+      keyword
     )}&type=artist&limit=${limit}&offset=${offset}`;
 
     const response = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${spotifyClientId}&${spotifyClientSecret}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 
-    const data = await response.json();
+    const data = response.data;
     const artists = data.artists.items;
 
     for (const artist of artists) {
-      const [existing] = await db.query(
+      const existing = await db.query(
         "SELECT id FROM Artists WHERE id_artists_spotify = ?",
         [artist.id]
       );
@@ -36,23 +38,22 @@ async function fetchAndInsertArtists(id) {
           artist.id,
         ]);
       }
-      return {
-        page,
-        limit,
-        total: data.artists.total,
-        results: artists.map((a) => ({
-          spotify_id: a.id,
-          name: a.name,
-          genres: a.genres,
-        })),
-      };
     }
 
-    return { message: "Artists inserted successfully" };
+    return {
+      page,
+      limit,
+      total: data.artists.total,
+      results: artists.map((a) => ({
+        spotify_id: a.id,
+        name: a.name,
+        genres: a.genres,
+      })),
+    };
   } catch (error) {
     console.error(
-      "Error fetching or inserting artists:",
-      error.response?.data || error
+      "❌ Error fetching or inserting artists:",
+      error.response?.data || error.message
     );
     throw error;
   }
@@ -60,7 +61,10 @@ async function fetchAndInsertArtists(id) {
 
 async function getMultiple(page = 1) {
   const offset = helper.getOffset(page, config.listPerPage);
-  const rows = await db.query(`SELECT * FROM Artists`);
+  const rows = await db.query(`SELECT * FROM Artists LIMIT ? OFFSET ?`, [
+    config.listPerPage,
+    offset,
+  ]);
   const data = helper.emptyorRows(rows);
   const meta = { page };
 
