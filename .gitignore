@@ -61,8 +61,7 @@ temp/
 .terraform/
 
 # Project secret tokens / credentials
-spotifyToken.js
-ticketmaster.js
+
 config.js
 spotify-token.json
 
