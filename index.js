@@ -2,9 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const port = 3000;
+
+// Import des routes
 const usersRouter = require("./routes/users");
 const artistsRouter = require("./routes/artists");
 const eventsRouter = require("./routes/events");
+const spotifyRouter = require("./routes/spotify");
+const ticketmasterRouter = require("./routes/ticketmaster"); // AJOUT
 
 const corsOptions = {
   origin: "*",
@@ -13,22 +17,18 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
 app.use(express.json());
-app.use(
-  express.urlencoded({
-    extended: true,
-  })
-);
+app.use(express.urlencoded({ extended: true }));
 
-// Users table visualization
+// Servir les fichiers statiques (frontend)
+app.use(express.static("public"));
+
+// Routes API
 app.use("/Users", usersRouter);
-
-// Artists table visualization
 app.use("/artists", artistsRouter);
-
-// Events table visualization
 app.use("/events", eventsRouter);
+app.use("/spotify", spotifyRouter);
+app.use("/ticketmaster", ticketmasterRouter); // AJOUT
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {
