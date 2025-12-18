@@ -1,5 +1,5 @@
 fetch(
-  "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&size=50&apikey=GB63Q2HN7Fo2mTBmSXL25Dq6wS1amhVV&segmentId=KZFzniwnSyZfZ7v7nJ"
+  "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=FR&size=50&apikey=GB63Q2HN7Fo2mTBmSXL25Dq6wS1amhVV&segmentId=KZFzniwnSyZfZ7v7nJ"
 )
   .then((res) => res.json())
   .then((res) => {
