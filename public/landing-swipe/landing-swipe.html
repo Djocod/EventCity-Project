@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event City</title>
+    <link rel="stylesheet" href="../asset/style/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="background-landing-swipe">
+    <nav>
+      <img src="../asset/img/logo2.png" alt="" />
+      <h2>Dashboard</h2>
+      <a href="../profil/profil.html">
+        <img src="../asset/img/scooby.jpg" alt="" />
+      </a>
+    </nav>
+
+    <section class="container-dashboard">
+      <div class="container-artists">
+        <h3>Artistes:</h3>
+        <div class="artists">
+          <img src="../asset/img//scooby.jpg" alt="" />
+          <img src="../asset/img//scooby.jpg" alt="" />
+        </div>
+      </div>
+      <div class="container-last-event">
+        <div class="card-last-event">
+          <img src="../asset/img/téléchargement.jpg" alt="" />
+          <div class="desciption-event">
+            <h3>Name Event</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
+              aperiam nostrum sapiente quia nemo, distinctio rerum. Modi tempora
+              consectetur officiis!
+            </p>
+          </div>
+        </div>
+        <ul class="container-gender">
+          <li class="items-gender">Rap</li>
+          <li class="items-gender">R&B</li>
+          <li class="items-gender">Pop</li>
+        </ul>
+      </div>
+    </section>
+
+    <form class="form-dash">
+      <div class="container-search">
+        <label for="search-dash">Recherche</label>
+        <input type="text" name="search-dash" id="search-dash" />
+      </div>
+      <div class="container-select">
+        <label for="select-gender">Genre</label>
+        <select name="select-gender" id="select-gender"></select>
+      </div>
+    </form>
+    <div class="card-container"></div>
+    <script src="./landing-swipe.js"></script>
+  </body>
+</html>
