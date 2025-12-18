@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event City</title>
+    <link rel="stylesheet" href="../asset/style/index.css" />
+  </head>
+  <body class="background-form">
+    <form class="form-sign">
+      <div class="container-input-name">
+        <div class="surname-container">
+          <label for="surname">Nom</label>
+          <input type="text" id="surname" autocomplete="off" />
+          <span></span>
+        </div>
+        <div class="pseudo-container">
+          <label for="pseudo">Prénom</label>
+          <input type="text" id="pseudo" autocomplete="off" />
+          <span></span>
+        </div>
+      </div>
+      <div class="years-container">
+        <label for="years">Date de naissance</label>
+        <input type="date" id="years" value="" min="1900/01/01/" />
+        <span></span>
+      </div>
+      <div class="email-container">
+        <label for="email">E-mail</label>
+        <input
+          type="text"
+          id="email"
+          placeholder="Entrez votre email."
+          autocomplete="off"
+        />
+        <span></span>
+      </div>
+      <div class="city-container">
+        <label for="city">Ville</label>
+        <input
+          type="text"
+          id="city"
+          placeholder="Votre ville"
+          autocomplete="off"
+        />
+        <span></span>
+      </div>
+      <div class="password-container">
+        <label for="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Votre mot de passe."
+          autocomplete="off"
+        />
+        <span></span>
+      </div>
+      <div class="confirmPass-container">
+        <label for="confirm">Confirmer votre mot de passe</label>
+        <input
+          type="password"
+          id="confirmPass"
+          placeholder="Confirmer votre mot de passe."
+          autocomplete="off"
+        />
+        <span></span>
+      </div>
+      <div class="check-container">
+        <input type="checkbox" id="cgv" />
+        <label for="cgv">Conditions générales de vente.</label>
+        <button class="btn-submit">Valider</button>
+      </div>
+    </form>
+    <script src="./form.js"></script>
+  </body>
+</html>
