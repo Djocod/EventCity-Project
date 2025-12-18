@@ -5,7 +5,7 @@
   align-content: center;
   background: url(../../asset/img/img-concert3.jpeg) center/cover no-repeat;
 
-  .form-conect {
+  .form-connect {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,10 +19,21 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      padding: 20px 0px;
+      padding: 5px 0px;
       label {
         color: white;
-        font-size: 0.8rem;
+        font-size: 1.4rem;
+      }
+      span {
+        bottom: -10px;
+        left: 0;
+        display: block;
+        font-size: 0.5rem;
+        transition: 0.3s;
+        color: red;
+      }
+      .error {
+        border: 1px solid rgba(255, 0, 0, 0.527);
       }
     }
     button {
@@ -30,16 +41,8 @@
       margin: 20px auto;
       border: 1px solid silver;
       border-radius: 5px;
-      a {
-        color: rgb(39, 39, 39);
-        text-decoration: none;
-        font-size: 1.6rem;
-        transition: 0.3s ease-in-out;
-      }
+      font-size: 1.4rem;
       &:hover {
-        a {
-          color: white;
-        }
         background: rgb(246, 216, 69);
         transition: 0.3s ease-in-out;
       }
