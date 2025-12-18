@@ -75,8 +75,6 @@ async function searchArtistAndEvents(artistName) {
   displayEvents(events, spotifyArtist);
 }
 
-/* ---------- UI ---------- */
-
 function createArtistCard(artist) {
   const genres =
     artist.genres.length > 0 ? artist.genres.join(", ") : "Genre inconnu";
