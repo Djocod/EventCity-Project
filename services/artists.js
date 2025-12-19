@@ -2,37 +2,27 @@ const db = require("./db");
 const helper = require("../helper");
 const config = require("../config");
 const axios = require("axios");
-const { getSpotifyToken } = require("../spotifyToken");
+const spotifyToken = require("../config.spotifyToken");
 
-const spotifyClientId = config.spotifyToken.spotifyClientId;
-const spotifyClientSecret = config.spotifyToken.spotifyClientSecret;
-
-// Récupérer et insérer des artistes depuis Spotify
-async function fetchAndInsertArtists(keyword, page = 1) {
+// Fetch and insert artists from Spotify
+async function fetchAndInsertArtists(id) {
   try {
-    const token = await getSpotifyToken();
-    const limit = 10;
-    const offset = (page - 1) * limit;
-
+    const token = await getAccessToken();
     const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(
-      keyword
-    )}&type=artist&limit=${limit}&offset=${offset}`;
+      id
+    )}&type=artist&limit=20`;
 
     const response = await axios.get(url, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      headers: { Authorization: `Bearer ${token}` },
     });
 
-    const data = response.data;
-    const artists = data.artists.items;
+    const artists = response.data.artists.items;
 
     for (const artist of artists) {
-      const existing = await db.query(
+      const [existing] = await db.query(
         "SELECT id FROM Artists WHERE id_artists_spotify = ?",
         [artist.id]
       );
-
       if (!existing.length) {
         await db.query("INSERT INTO Artists (id_artists_spotify) VALUES (?)", [
           artist.id,
@@ -61,10 +51,7 @@ async function fetchAndInsertArtists(keyword, page = 1) {
 
 async function getMultiple(page = 1) {
   const offset = helper.getOffset(page, config.listPerPage);
-  const rows = await db.query(`SELECT * FROM Artists LIMIT ? OFFSET ?`, [
-    config.listPerPage,
-    offset,
-  ]);
+  const rows = await db.query(`SELECT * FROM Artists`);
   const data = helper.emptyorRows(rows);
   const meta = { page };
 
