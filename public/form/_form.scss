@@ -1,0 +1,119 @@
+// ================= Mixin =================
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// ================= Body Form =================
+.background-form {
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  place-content: center;
+  background: url(../../asset/img/image-concert.png) center/cover, no-repeat;
+  color: white;
+}
+label {
+  margin: 5px;
+  font-size: 0.8rem;
+}
+input[type="text"],
+input[type="date"],
+input[type="password"] {
+  border: 1px solid silver;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+}
+
+// ================= Form =================
+.form-sign {
+  position: relative;
+  padding: 30px;
+  width: 100%;
+  background: rgb(39, 39, 39);
+  box-shadow: 5px 5px 0px 5px rgb(246, 216, 69);
+  border-radius: 10px;
+  span {
+    bottom: -10px;
+    left: 0;
+    display: block;
+    font-size: 0.5rem;
+    transition: 0.3s;
+    color: red;
+  }
+  .error {
+    border: 1px solid rgba(255, 0, 0, 0.527);
+  }
+
+  // ================= Surname, Name =================
+  .container-input-name {
+    display: flex;
+    justify-content: space-between;
+    .surname-container,
+    .pseudo-container {
+      @include flex-column;
+      #surname,
+      #pseudo {
+        margin-right: 10px;
+      }
+    }
+  }
+  // ================= Years =================
+  .years-container {
+    @include flex-column;
+    margin: 5px 0px;
+    input[type="date"] {
+      width: 50%;
+      text-align: center;
+    }
+  }
+  // ================= Email =================
+  .email-container {
+    width: 100%;
+    @include flex-column;
+  }
+  // ================= City =================
+  .city-container {
+    @include flex-column;
+  }
+
+  // ================= Password =================
+  .password-container {
+    width: 100%;
+    @include flex-column;
+  }
+  // ================= Confirm Password =================
+  .confirmPass-container {
+    width: 100%;
+    @include flex-column;
+  }
+  // ================= CGV =================
+  .check-container {
+    width: 100%;
+    margin: 20px auto 10px;
+    display: flex;
+    align-items: center;
+
+    input[type="checkbox" i] {
+      outline: none;
+    }
+    // ================= Btn-Submit =================
+    .btn-submit {
+      width: 20%;
+      margin: 0 auto;
+      height: 30px;
+      border-radius: 20px;
+      border: none;
+      transition: 0.3s ease-in-out;
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      &:hover {
+        background: rgb(246, 216, 69);
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+}
