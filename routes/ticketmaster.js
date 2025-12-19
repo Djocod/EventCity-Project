@@ -54,7 +54,7 @@ router.get("/events", async (req, res) => {
 
     res.json(response.data);
   } catch (error) {
-    console.error("❌ Erreur Ticketmaster events:", error.message);
+    console.error(" Erreur Ticketmaster events:", error.message);
     res.status(500).json({
       error: "Erreur lors de la récupération des événements",
       details: error.response?.data || error.message,
