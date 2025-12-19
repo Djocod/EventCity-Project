@@ -29,7 +29,7 @@ async function fetchSpotifyAccessToken() {
   }
 }
 
-// ============ if token is dead reload ============
+// ============ If Token Is Dead Reload ============
 window.addEventListener("DOMContentLoaded", async () => {
   const tokenOk = await fetchSpotifyAccessToken();
   if (tokenOk) {
@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-// ============ get event and check if  ============
+// ============ Get Event API and Check If it's out  ============
 async function displayArtistsWithEventsOnLoad() {
   try {
     const response = await fetch(
@@ -170,11 +170,16 @@ function displayArtistCard(artist) {
         <p class="artist-stats">Popularité: ${
           artist.popularity
         }/100 | ${followersFormatted} followers</p>
+        <button class="btn-spot">
         <a href="${
           artist.spotifyUrl
         }" target="_blank" rel="noopener" class="spotify-link">
-          🎵 Écouter sur Spotify
+        Écouter sur Spotify
         </a>
+        </button >
+        <button type="submit" class="btn-save">
+        <a hreft="" class="postDataArtist">Ajouter aux favoris</a>
+        </button>
       </div>
     </div>
   `;
@@ -203,11 +208,15 @@ function displayEvents(events) {
           data.classifications?.[0]?.genre?.name || "Genre non spécifié"
         }</p>
         <div class="location-date">
-          <p>Date:</p>
+          <p>${data._embedded.venues[0].city.name}</p>
           <p>${data.dates.start.localDate}</p>
         </div>
         <button>
           <a href="${data.url}" target="_blank">Billets</a>
+        </button>
+        <button type="submit">
+        <a hreft="" class="postDataTicket">Enregistrer
+        </a>
         </button>
       </div>
     `;
