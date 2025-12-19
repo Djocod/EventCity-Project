@@ -20,6 +20,11 @@ cd EventCity-Project
 
 ```bash
 npm install
+npm i mysql
+npm i mysql2
+npm i express
+npm i cors
+npm i axios
 ```
 
 ## Configuration
