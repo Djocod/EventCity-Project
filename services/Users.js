@@ -1,6 +1,31 @@
+// CREATE NES USER AND GET MULTIPLE USERS FROM DATABASE
+
 const db = require("./db");
 const helper = require("../helper");
 const config = require("../config");
+
+async function create(user) {
+  const result = await db.query(
+    `INSERT INTO Users (surname, name, password, email, birthdate, city) 
+     VALUES (?, ?, ?, ?, ?, ?)`,
+    [
+      user.surname,
+      user.name,
+      user.password,
+      user.email,
+      user.birthdate,
+      user.city,
+    ]
+  );
+
+  let message = "Error while creating user";
+
+  if (result.affectedRows) {
+    message = "User created successfully";
+  }
+
+  return { message };
+}
 
 async function getMultiple(page = 1) {
   const offset = helper.getOffset(page, config.listPerPage);
@@ -16,4 +41,5 @@ async function getMultiple(page = 1) {
 
 module.exports = {
   getMultiple,
+  create,
 };

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { getSpotifyToken } = require("../spotifyToken");
 
-// Endpoint pour récupérer le token Spotify
+// where the spotify token is fetched
 router.get("/spotify-token", async (req, res) => {
   try {
     const token = await getSpotifyToken();

@@ -1,9 +1,16 @@
-const spotifyToken = require("./config.spotifyToken"); //
+//const spotifyToken = require("./config/spotifyToken");
+const config = require("./config");
+const axios = require("axios");
 
-let cachedToken = null; // save token to the cash
+const spotifyClientId = config.spotifyToken.spotifyClientId;
+const spotifyClientSecret = config.spotifyToken.spotifyClientSecret;
+const spotifyToken = `${spotifyClientId}:${spotifyClientSecret}`;
+//const { spotifyClientId, spotifyClientSecret } = config.spotifyToken;
+
+let cachedToken = null; // save token to the cache
 let tokenExpiresAt = 0;
 
-export async function getSpotifyToken() {
+async function getSpotifyToken() {
   const now = Date.now();
 
   // if token is in cache and still valid

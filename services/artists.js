@@ -7,7 +7,7 @@ const { getSpotifyToken } = require("../spotifyToken");
 const spotifyClientId = config.spotifyToken.spotifyClientId;
 const spotifyClientSecret = config.spotifyToken.spotifyClientSecret;
 
-// Récupérer et insérer des artistes depuis Spotify
+// Fetch artists from Spotify API and insert into database if not exisr
 async function fetchAndInsertArtists(keyword, page = 1) {
   try {
     const token = await getSpotifyToken();

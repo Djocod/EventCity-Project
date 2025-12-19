@@ -5,10 +5,10 @@ const { fetchEvents } = require("../ticketmaster");
 
 async function fetchAndInsertEvents() {
   try {
-    // 1️⃣ Fetch events from Ticketmaster
+    //etch events from Ticketmaster
     const events = await fetchEvents();
 
-    // 2️⃣ Insert into database
+    // checks if event already exists in the database if not data will be inserted
     for (const event of events) {
       const ticketmasterId = event.id;
 

@@ -1,4 +1,6 @@
-const mqsql = require("mysql");
+// DATABASE CONNECTION AND QUERY EXECUTION
+
+const mysql = require("mysql");
 const config = require("../config");
 
 async function query(sql, params) {
