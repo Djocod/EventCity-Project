@@ -1,14 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = 3000;
+const port = 3001;
 
-// Import des routes
+// Import of the routes
 const usersRouter = require("./routes/users");
 const artistsRouter = require("./routes/artists");
 const eventsRouter = require("./routes/events");
 const spotifyRouter = require("./routes/spotify");
-const ticketmasterRouter = require("./routes/ticketmaster"); // AJOUT
+const ticketmasterRouter = require("./routes/ticketmaster");
 
 const corsOptions = {
   origin: "*",
@@ -25,14 +25,14 @@ app.use(
   })
 );
 
-// Users table visualization
-app.use("/users", usersRouter);
-
-// Artists table visualization
+// Routes API
+app.use("/Users", usersRouter);
 app.use("/artists", artistsRouter);
 
 // Events table visualization
 app.use("/events", eventsRouter);
+app.use("/spotify", spotifyRouter);
+app.use("/ticketmaster", ticketmasterRouter);
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {

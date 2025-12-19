@@ -179,31 +179,53 @@ inputs.forEach((input) => {
 });
 
 //---- Config forEarch Save Data ----
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  if (surname && pseudo && email && city && password && confirmPass) {
+
+  if (surname && pseudo && email && city && password && confirmPass && years) {
     const data = {
       surname,
       pseudo,
-      years,
-      email,
-      city,
       password,
+      email,
+      years,
+      city,
     };
 
-    console.log(data);
-    inputs.forEach((input) => (input.value = ""));
-    surname = null;
-    pseudo = null;
-    years = null;
-    email = null;
-    city = null;
-    password = null;
-    confirmPass = null;
+    try {
+      // Envoyer les données au serveur
+      const response = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    alert("Inscription validée");
-    window.location.href = "../../public/landing-swipe/landing-swipe.html";
-    return data;
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log("Succès:", result);
+
+        // Réinitialiser le formulaire
+        inputs.forEach((input) => (input.value = ""));
+        surname = null;
+        pseudo = null;
+        years = null;
+        email = null;
+        city = null;
+        password = null;
+        confirmPass = null;
+
+        alert("Inscription validée");
+        window.location.href = "../../public/landing-swipe/landing-swipe.html";
+      } else {
+        alert("Erreur lors de l'inscription");
+      }
+    } catch (error) {
+      console.error("Erreur:", error);
+      alert("Erreur de connexion au serveur");
+    }
   } else {
     alert("Veuillez remplir correctement les champs!");
   }

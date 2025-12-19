@@ -1,56 +1,80 @@
+# Node modules
 node_modules/
 
-# Environment and secret files
-.env
-.env.*
-spotifyToken.js
-config.js
-
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # Runtime data
-pids
+pids/
 *.pid
 *.seed
+*.pid.lock
 
-# Build output
+# Coverage and build output
+.nyc_output/
+coverage/
 dist/
 build/
 out/
-.next/
 
-# Coverage
-coverage/
-.nyc_output/
+# Dependency directories
+.pnp/
+.pnp.js
 
-# Temporary
-tmp/
-temp/
-.cache/
-.parcel-cache/
+# Optional npm cache directory
+.npm/
 
-# Databases
-*.sqlite
-*.sqlite3
-*.db
+# macOS
+.DS_Store
 
-# IDEs and editors
+# Windows
+Thumbs.db
+
+# Editors
 .vscode/
 .idea/
 *.sublime-workspace
 *.sublime-project
 
-# macOS
-.DS_Store
+# Env files
+.env
+.env.*
+
+# Misc caches
+.cache/
+.parcel-cache/
+
+# Test output
+.jest/
+
+# OS temp files
+tmp/
+temp/
+
+# Serverless / infrastructure
+.serverless/
+.terraform/
+
+# Project secret tokens / credentials
+
+config.js
+spotify-token.json
+
+# Database files (if any local sqlite or db files are created during development)
+*.sqlite
+*.sqlite3
+
+# IDE and local settings
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Misc
-.eslintcache
-.serverless/
-public/uploads/
-uploads/config.js
-node_modules/
+.DS_Store
+Thumbs.db
