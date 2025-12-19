@@ -16,7 +16,7 @@ router.get("/events/search", async (req, res) => {
         .json({ error: 'Le paramètre "keyword" est requis' });
     }
 
-    const url = "https://app.ticketmaster.com/discovery/v2/events.json";
+    const url = `https://app.ticketmaster.com/discovery/v2/events.json`;
 
     const response = await axios.get(url, {
       params: {
@@ -42,7 +42,7 @@ router.get("/events", async (req, res) => {
   try {
     const { countryCode = "FR", size = 10 } = req.query;
 
-    const url = "https://app.ticketmaster.com/discovery/v2/events.json";
+    const url = `https://app.ticketmaster.com/discovery/v2/events.json`;
 
     const response = await axios.get(url, {
       params: {

@@ -1,3 +1,4 @@
+/* NAVIGATION BAR */
 nav {
   display: flex;
   justify-content: space-between;
@@ -12,11 +13,10 @@ nav {
 
   h2 {
     font-size: 1.8rem;
-    color: #fff;
+    color: white;
     text-transform: uppercase;
     font-weight: 900;
     font-style: italic;
-    letter-spacing: -1px;
     margin: 0;
 
     span {
@@ -27,7 +27,6 @@ nav {
   p {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.7);
-    font-weight: 500;
     text-transform: uppercase;
   }
 
@@ -37,11 +36,6 @@ nav {
     border-radius: 50%;
     border: 2px solid rgb(246, 217, 69);
     object-fit: cover;
-    transition: transform 0.3s ease;
-
-    &:hover {
-      transform: rotate(10deg) scale(1.1);
-    }
   }
 
   .container-nav-cta {
@@ -56,25 +50,25 @@ nav {
     border: none;
     background: white;
     cursor: pointer;
-    transition: 0.3s ease-in-out;
+    transition: 0.3s;
 
     a {
       text-decoration: none;
       color: rgb(39, 39, 39);
-      font-size: 1rem;
     }
+
     &:hover {
       background: rgb(246, 216, 69);
     }
   }
 }
 
+/* HEADER */
 .container-header-landingpage {
   background: url("../../asset/img/img-concert3.jpeg") center/cover no-repeat;
-  height: 100vh;
+  height: 100vh; /* full screen */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
 
   .container-header-elements {
@@ -83,25 +77,21 @@ nav {
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: white;
     text-align: center;
 
     h1 {
       font-size: 9rem;
-      color: rgb(27, 27, 27);
       border-bottom: 5px solid rgb(246, 217, 69);
     }
 
     p {
       font-size: 3rem;
       margin-bottom: 40px;
-      color: rgb(0, 0, 0);
       font-weight: 700;
     }
 
     .container-heeader-cta {
       display: flex;
-      justify-content: center;
       gap: 10px;
       margin-top: 20px;
     }
@@ -112,13 +102,6 @@ nav {
       border: none;
       background: white;
       cursor: pointer;
-      transition: 0.3s ease-in-out;
-    }
-
-    .container-heeader-cta button a {
-      text-decoration: none;
-      color: rgb(39, 39, 39);
-      font-size: 1rem;
     }
 
     .container-heeader-cta button:hover {
@@ -126,70 +109,64 @@ nav {
     }
   }
 }
+
+/* EVENT INFO */
 .infos-event {
   background-color: rgb(39, 39, 39);
-  width: 100%;
   height: 80px;
   color: rgb(246, 216, 69);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .infos-event p {
   font-size: 1.5rem;
   font-weight: bold;
 }
-section {
-  width: 100%;
-  padding: 40px 20px;
-}
+
+/* DESCRIPTION */
 .container-description {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
   gap: 50px;
   max-width: 1200px;
   margin: 60px auto;
-  padding: 0 20px;
 }
 
 .container-description p {
-  font-size: 1.2rem;
-  line-height: 1.7;
   text-align: center;
+  line-height: 1.7;
 }
 
+/* IMAGE HOVER */
 .container-hover-img {
   display: flex;
   justify-content: center;
   gap: 25px;
-  overflow: hidden;
   flex-wrap: wrap;
-  margin-top: 40px;
 }
 
 .container-hover-img img {
   width: 300px;
   height: 400px;
   border-radius: 10px;
-  object-fit: cover;
   border: 3px solid rgb(246, 216, 69);
-  transition: transform 0.3s ease;
-  cursor: pointer;
+  transition: transform 0.3s;
 }
 
 .container-hover-img img:hover {
-  transform: scale(1.05);
+  transform: scale(1.05); /* zoom */
 }
+
+/* KEYWORDS */
 .keywords {
   background-color: rgb(39, 39, 39);
-  margin-top: 40px;
-  text-align: center;
   padding: 20px;
+  text-align: center;
 }
 
 .keywords p {
   color: rgb(246, 216, 69);
-  font-size: 1.2rem;
   font-weight: bold;
 }

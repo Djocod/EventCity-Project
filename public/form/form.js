@@ -228,3 +228,4 @@ form.addEventListener("submit", async (e) => {
     alert("Veuillez remplir correctement les champs!");
   }
 });
+console.log(data);
