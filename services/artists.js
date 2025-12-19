@@ -2,7 +2,7 @@ const db = require("./db");
 const helper = require("../helper");
 const config = require("../config");
 const axios = require("axios");
-const { getSpotifyToken } = require("../spotifyToken");
+const spotifyToken = require("../config.spotifyToken");
 
 const spotifyClientId = config.spotifyToken.spotifyClientId;
 const spotifyClientSecret = config.spotifyToken.spotifyClientSecret;
@@ -10,13 +10,10 @@ const spotifyClientSecret = config.spotifyToken.spotifyClientSecret;
 // Fetch artists from Spotify API and insert into database if not exisr
 async function fetchAndInsertArtists(keyword, page = 1) {
   try {
-    const token = await getSpotifyToken();
-    const limit = 10;
-    const offset = (page - 1) * limit;
-
+    const token = await getAccessToken();
     const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(
-      keyword
-    )}&type=artist&limit=${limit}&offset=${offset}`;
+      id
+    )}&type=artist&limit=20`;
 
     const response = await axios.get(url, {
       headers: {
@@ -32,7 +29,6 @@ async function fetchAndInsertArtists(keyword, page = 1) {
         "SELECT id FROM Artists WHERE id_artists_spotify = ?",
         [artist.id]
       );
-
       if (!existing.length) {
         await db.query("INSERT INTO Artists (id_artists_spotify) VALUES (?)", [
           artist.id,

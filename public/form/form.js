@@ -7,6 +7,7 @@ const btnValid = document.querySelector(".btn-submit");
 // //---------------- Config Variable---------------
 let surname, pseudo, years, email, city, password, confirmPass;
 
+// //---------------- Config Variable Message ---------------
 const errorDisplay = (tag, message, valid) => {
   console.log(tag);
   console.log(valid);
@@ -21,7 +22,7 @@ const errorDisplay = (tag, message, valid) => {
   }
 };
 
-//---------------- Config Pseudo---------------
+//---------------- Config Surname---------------
 const surnameChecker = (value) => {
   if ((value.length > 0 && value.length < 3) || value.length > 20) {
     errorDisplay(
@@ -41,6 +42,7 @@ const surnameChecker = (value) => {
     surname = value;
   }
 };
+//---------------- Config Pseudo ---------------
 const pseudoChecker = (value) => {
   if ((value.length > 0 && value.length < 3) || value.length > 20) {
     errorDisplay(
@@ -60,7 +62,7 @@ const pseudoChecker = (value) => {
   }
 };
 
-//---------------- Config years---------------
+//---------------- Config Years---------------
 const yearsChecker = (value) => {
   if (!value) {
     errorDisplay("year", "Veuillez entrer votre date de naissance !");
@@ -92,7 +94,7 @@ const emailChecker = (value) => {
     email = value;
   }
 };
-//---------------- Config address---------------
+//---------------- Config Address---------------
 const cityChecker = (value) => {
   if (!value.match(/^[a-zA-ZÀ-ÿ0-9\s'’\-,.]*$/)) {
     errorDisplay("city", "Merci d'entrer une ville valide !");
@@ -228,4 +230,3 @@ form.addEventListener("submit", async (e) => {
     alert("Veuillez remplir correctement les champs!");
   }
 });
-console.log(data);

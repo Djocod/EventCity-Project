@@ -17,12 +17,19 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
 // Routes API
 app.use("/Users", usersRouter);
 app.use("/artists", artistsRouter);
+
+// Events table visualization
 app.use("/events", eventsRouter);
 app.use("/spotify", spotifyRouter);
 app.use("/ticketmaster", ticketmasterRouter);
@@ -39,12 +46,12 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
 
-//const server = app.listen(8081, function () {
-//const host = server.address().address;
-//const port = server.address().port;
+const server = app.listen(8081, function () {
+  const host = server.address().address;
+  const port = server.address().port;
 
-//console.log("Example server listening at http://%s:%s", host, port);
-//});
+  console.log("Example server listening at http://%s:%s", host, port);
+});
 
 // this allows that the "public" folder can be everyone This folder holds all information about the front
 app.use(express.static("public"));

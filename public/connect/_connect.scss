@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
     width: 400px;
     padding: 20px;
     background: rgb(39, 39, 39);
@@ -22,6 +23,7 @@
       align-items: flex-start;
       width: 100%;
       padding: 5px 0px;
+      width: 100%;
       label {
         color: white;
         font-size: 1.4rem;

@@ -1,8 +1,10 @@
+// ================= Mixin =================
 @mixin flex-column {
   display: flex;
   flex-direction: column;
 }
 
+// ================= Body Form =================
 .background-form {
   margin: 0 auto;
   width: 100%;
@@ -24,6 +26,7 @@ input[type="password"] {
   outline: none;
 }
 
+// ================= Form =================
 .form-sign {
   position: relative;
   padding: 30px;
@@ -43,6 +46,7 @@ input[type="password"] {
     border: 1px solid rgba(255, 0, 0, 0.527);
   }
 
+  // ================= Surname, Name =================
   .container-input-name {
     display: flex;
     justify-content: space-between;
@@ -55,6 +59,7 @@ input[type="password"] {
       }
     }
   }
+  // ================= Years =================
   .years-container {
     @include flex-column;
     margin: 5px 0px;
@@ -63,22 +68,27 @@ input[type="password"] {
       text-align: center;
     }
   }
+  // ================= Email =================
   .email-container {
     width: 100%;
     @include flex-column;
   }
+  // ================= City =================
   .city-container {
     @include flex-column;
   }
 
+  // ================= Password =================
   .password-container {
     width: 100%;
     @include flex-column;
   }
+  // ================= Confirm Password =================
   .confirmPass-container {
     width: 100%;
     @include flex-column;
   }
+  // ================= CGV =================
   .check-container {
     width: 100%;
     margin: 20px auto 10px;
@@ -88,6 +98,7 @@ input[type="password"] {
     input[type="checkbox" i] {
       outline: none;
     }
+    // ================= Btn-Submit =================
     .btn-submit {
       width: 20%;
       margin: 0 auto;
