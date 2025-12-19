@@ -200,7 +200,9 @@ form.addEventListener("submit", (e) => {
 
     alert("Inscription validée");
     window.location.href = "../../public/landing-swipe/landing-swipe.html";
+    return data;
   } else {
     alert("Veuillez remplir correctement les champs!");
   }
 });
+console.log(data);

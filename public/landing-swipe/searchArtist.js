@@ -1,14 +1,12 @@
 const inputSearch = document.getElementById("search-dash");
 const cardCont = document.querySelector(".card-container");
-const selectGender = document.getElementById("select-gender");
 const containerArtistSection = document.querySelector(
   ".container-artist-section"
 );
 
 let spotifyAccessToken = "";
-let allGenres = new Set();
 
-// ============ RÉCUPÉRATION DU TOKEN SPOTIFY ============
+// ============ Get Token Spotify ============
 async function fetchSpotifyAccessToken() {
   try {
     const res = await fetch("http://localhost:3000/spotify/spotify-token");
@@ -31,7 +29,7 @@ async function fetchSpotifyAccessToken() {
   }
 }
 
-// ============ CHARGEMENT INITIAL ============
+// ============ if token is dead reload ============
 window.addEventListener("DOMContentLoaded", async () => {
   const tokenOk = await fetchSpotifyAccessToken();
   if (tokenOk) {
@@ -42,10 +40,9 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-// ============ AFFICHAGE INITIAL DES ÉVÉNEMENTS ============
+// ============ get event and check if  ============
 async function displayArtistsWithEventsOnLoad() {
   try {
-    // Utiliser la route backend Ticketmaster
     const response = await fetch(
       "http://localhost:3000/ticketmaster/events?countryCode=FR&size=10"
     );
@@ -65,7 +62,6 @@ async function displayArtistsWithEventsOnLoad() {
 
     cardCont.innerHTML = "";
     containerArtistSection.innerHTML = "";
-    allGenres.clear();
 
     for (const event of events) {
       const artistName = event._embedded?.attractions?.[0]?.name;
@@ -79,15 +75,13 @@ async function displayArtistsWithEventsOnLoad() {
 
       displayEvents([event]);
     }
-
-    updateGenreFilter();
   } catch (e) {
     console.error("Erreur lors du chargement initial:", e);
     cardCont.innerHTML = "<p class='no-result'>Erreur de chargement</p>";
   }
 }
 
-// ============ RECHERCHE SPOTIFY ============
+// ============ search data on spotify ============
 async function searchArtistOnSpotify(artistName) {
   if (!artistName || !spotifyAccessToken) return null;
 
@@ -129,12 +123,11 @@ async function searchArtistOnSpotify(artistName) {
   }
 }
 
-// ============ RECHERCHE TICKETMASTER ============
+// ============ search data on ticket ============
 async function searchEventsOnTicketmaster(artistName) {
   if (!artistName) return [];
 
   try {
-    // Utiliser la route backend
     const response = await fetch(
       `http://localhost:3000/ticketmaster/events/search?keyword=${encodeURIComponent(
         artistName
@@ -154,7 +147,7 @@ async function searchEventsOnTicketmaster(artistName) {
   }
 }
 
-// ============ AFFICHAGE ARTISTE ============
+// ============ display card artist spotify ============
 function displayArtistCard(artist) {
   containerArtistSection.innerHTML = "";
   const artistSection = document.createElement("div");
@@ -189,10 +182,10 @@ function displayArtistCard(artist) {
   containerArtistSection.appendChild(artistSection);
 }
 
-// ============ AFFICHAGE ÉVÉNEMENTS ============
+// ============ display card event ticket master ============
 function displayEvents(events) {
   events.forEach((data) => {
-    // Trouver la meilleure image disponible
+    // search best img
     let imageUrl = "";
     if (data.images && data.images.length > 0) {
       imageUrl =
@@ -219,30 +212,10 @@ function displayEvents(events) {
       </div>
     `;
     cardCont.appendChild(card);
-
-    const genre = data.classifications?.[0]?.genre?.name;
-    if (genre) allGenres.add(genre);
   });
 }
 
-// ============ MISE À JOUR FILTRE GENRE ============
-function updateGenreFilter() {
-  selectGender.innerHTML = '<option value="">Tous les genres</option>';
-  allGenres.forEach((genre) => {
-    const opt = document.createElement("option");
-    opt.value = genre;
-    opt.textContent = genre;
-    selectGender.appendChild(opt);
-  });
-}
-
-// ============ AFFICHAGE AUCUN RÉSULTAT ============
-function displayNoResult() {
-  cardCont.innerHTML =
-    "<p class='no-result'>Aucun artiste ou événement trouvé.</p>";
-}
-
-// ============ RECHERCHE PRINCIPALE ============
+// ============ Compare the names ============
 async function searchArtistAndEvents() {
   const artistName = inputSearch.value.trim();
 
@@ -250,14 +223,10 @@ async function searchArtistAndEvents() {
     cardCont.innerHTML = "";
     return;
   }
-
-  cardCont.innerHTML = "<p class='loading'>🔍 Recherche en cours...</p>";
-  allGenres.clear();
-
   const spotifyArtist = await searchArtistOnSpotify(artistName);
 
   if (!spotifyArtist) {
-    displayNoResult();
+    cardCont.innerHTML = "";
     return;
   }
 
@@ -273,29 +242,11 @@ async function searchArtistAndEvents() {
     cardCont.appendChild(noEvents);
   } else {
     displayEvents(events);
-    updateGenreFilter();
   }
 }
 
-// ============ FILTRAGE PAR GENRE ============
-function filterByGenre() {
-  const selectedGenre = selectGender.value;
-  const allCards = cardCont.querySelectorAll(".card");
-
-  allCards.forEach((card) => {
-    const genreText = card.querySelector(".event-genre")?.textContent || "";
-    if (!selectedGenre || genreText === selectedGenre) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
-  });
-}
-
-// ============ EVENT LISTENERS ============
+// ============ limits calls ============
 inputSearch.addEventListener("input", () => {
   clearTimeout(inputSearch.searchTimeout);
   inputSearch.searchTimeout = setTimeout(searchArtistAndEvents, 500);
 });
-
-selectGender.addEventListener("change", filterByGenre);
