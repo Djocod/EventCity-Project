@@ -2,26 +2,23 @@ const db = require("./db");
 const helper = require("../helper");
 const config = require("../config");
 const axios = require("axios");
-const spotifyToken = require("../config.spotifyToken");
+const getSpotifyToken = require("../spotifyToken").getSpotifyToken;
 
-const spotifyClientId = config.spotifyToken.spotifyClientId;
-const spotifyClientSecret = config.spotifyToken.spotifyClientSecret;
-
-// Fetch artists from Spotify API and insert into database if not exisr
+// Fetch artists from Spotify API and insert into database if not exist
 async function fetchAndInsertArtists(keyword, page = 1) {
   try {
-    const token = await getAccessToken();
+    const accessToken = await getSpotifyToken();
     const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(
-      id
+      keyword
     )}&type=artist&limit=20`;
 
     const response = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${spotifyClientId}&${spotifyClientSecret}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     });
 
-    const data = await response.json();
+    const data = response.data;
     const artists = data.artists.items;
 
     for (const artist of artists) {
@@ -38,7 +35,7 @@ async function fetchAndInsertArtists(keyword, page = 1) {
 
     return {
       page,
-      limit,
+      limit: 20,
       total: data.artists.total,
       results: artists.map((a) => ({
         spotify_id: a.id,
@@ -57,10 +54,9 @@ async function fetchAndInsertArtists(keyword, page = 1) {
 
 async function getMultiple(page = 1) {
   const offset = helper.getOffset(page, config.listPerPage);
-  const rows = await db.query(`SELECT * FROM Artists`);
+  const rows = await db.query("SELECT * FROM Artists");
   const data = helper.emptyorRows(rows);
   const meta = { page };
-
   return {
     data,
     meta,
