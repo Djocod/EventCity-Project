@@ -1,10 +1,5 @@
+# Node modules
 node_modules/
-
-# Environment and secret files
-.env
-.env.*
-spotifyToken.js
-config.js
 
 # Logs
 logs/
