@@ -2,17 +2,20 @@ const express = require("express");
 const router = express.Router();
 const events = require("../services/events");
 
-// instead of // put here the page the page gets all the events information from
-router.get("/", async function (req, res, next) {
-  try {
-    res.json(await events.getMultiple(req.query.page));
-  } catch (err) {
-    console.error(` Error while getting Events `, err.message);
-    next(err);
+// page where we get all the events information from
+router.get(
+  "//public/landing-swipe/landing-swipe.html",
+  async function (req, res, next) {
+    try {
+      res.json(await events.getMultiple(req.query.page));
+    } catch (err) {
+      console.error(` Error while getting Events `, err.message);
+      next(err);
+    }
   }
-});
+);
 
-// POST /events/fetch → fetch from Ticketmaster & insert into DB
+//get events from the ticketmaster API
 router.post("/fetch", async function (req, res, next) {
   try {
     const result = await events.fetchAndInsertEvents();
