@@ -56,7 +56,9 @@ const passwordChecker = (value) => {
 };
 
 export async function checkedData(email, password) {
-  return fetch(`http://localhost:8000/api/users/search/${email}/${password}`)
+  return fetch(
+    `https://event-city-project.vercel.app/api/users/search/${email}/${password}`,
+  )
     .then((res) => res.json())
     .catch((error) => {
       console.error(error);

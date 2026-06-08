@@ -194,11 +194,14 @@ form.addEventListener("submit", async (e) => {
 
     try {
       // Envoyer les données au serveur
-      const response = await fetch("http://localhost:8000/api/users/addUser", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "https://event-city-project.vercel.app/api/users/addUser",
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        },
+      );
 
       const result = await response.json();
 

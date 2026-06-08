@@ -128,7 +128,7 @@ nav {
   font-size: 1.5rem;
   font-weight: bold;
 }
-section {
+.section-home {
   padding: 50px 20px;
   margin: 40px auto;
   background: grey;
@@ -139,6 +139,7 @@ section {
 
   .card-desc {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
     width: 100%;
