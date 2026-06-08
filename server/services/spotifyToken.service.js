@@ -21,11 +21,11 @@ export async function getToken() {
     },
     body: "grant_type=client_credentials",
   });
-  const json = await res.json();
-  console.log(json); // ← terminal Node.js
-  const { access_token, expires_in } = json;
-  // const { access_token, expires_in } = await res.json();
-  // cachedToken = access_token;
-  // tokenExpiry = Date.now() + (expires_in - 60) * 1000;
+  // const json = await res.json();
+  // console.log(json);
+  // const { access_token, expires_in } = json;
+  const { access_token, expires_in } = await res.json();
+  cachedToken = access_token;
+  tokenExpiry = Date.now() + (expires_in - 60) * 1000;
   return access_token;
 }
